@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const InputText = styled.input`
@@ -9,12 +9,21 @@ const InputText = styled.input`
   width:300px;
 `;
 
-
 function SearchBox(props){
+
+  const [texto, setTexto] = useState('');
+  
+  useEffect(()=>{
+    if(props.onChangeText){
+      props.onChangeText(texto);
+    }
+  }, [texto]);
 
   return(
     <InputText 
     type="text" 
+    value={texto}
+    onChange={(e) => setTexto(e.target.value)}
     placeholder={props.frasePadrao ?? "Digite alguma coisa"}/>
     //aqui estou dando a referencia do props para buscar frasePadrao que esta no App.js
     // e estou dizendo com (??) que se frasePadrao conter algo ele usa, se nao, ele coloca a frase que esta a frente;
