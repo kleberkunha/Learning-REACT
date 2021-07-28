@@ -18,15 +18,21 @@ function App (){
     ]);
   }, []);
 
-  ///The codes of adding a new list are in this file and SeachBox.js
+
 
   function addAction(newItem){
-    
     let newList = [...list, {title:newItem, done:false}];
 
     setList(newList);
-  
+  }
 
+
+  ///esta funçao esta reproduzindo o click, marcando ou desmarcando ,true or false;
+  function handleToggleDone(index){
+    let newList = [...list];
+    newList[index].done = !newList[index].done;
+
+    setList(newList);
   }
 
 
@@ -44,7 +50,7 @@ function App (){
       <ul>
         {list.map((item, index) => {
           return(
-            <li key={index}>{item.title} -- {item.done.toString()}</li>
+            <li key={index} onClick={() => {handleToggleDone(index)}}>{item.title} -- {item.done.toString()}</li>
           );
         })}
       </ul>
