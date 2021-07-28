@@ -1,19 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import SearchBox from './components/SearchBox';
+import Modal from './components/Modal';
 
 function App (){
 
-  const [name, setName] = useState (localStorage.getItem('name'));
+  const [modalVisible, setModalVisible] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem('name', name);
+  const handleButtonClick = () => {
+    setModalVisible(true);
+  }
 
-  },[name]);
+
 
   return (
     <>
-  <input type="text" value={name} onChange={e=>setName(e.target.value)}/>
+    <button onClick={handleButtonClick}>Abrir modal</button>
+    <Modal visible={modalVisible} setVisible={setModalVisible}>
+      <h1>testando 123</h1>
+    </Modal>
     </>
   );
 }
