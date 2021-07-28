@@ -18,9 +18,17 @@ function App (){
     ]);
   }, []);
 
-  function handleSearchInput(novoTexto){
-    setSeachText( novoTexto );
+  ///The codes of adding a new list are in this file and SeachBox.js
+
+  function addAction(newItem){
+    
+    let newList = [...list, {title:newItem, done:false}];
+
+    setList(newList);
+  
+
   }
+
 
 
   return (
@@ -28,8 +36,8 @@ function App (){
       <h1>Lista de tarefas</h1>
 
       <SearchBox 
-        frasePadrao= "Faça a sua busca..."
-        onChangeText={handleSearchInput}
+        frasePadrao= "Adicione um item..."
+        onEnter={addAction}
       />
 
       <hr/>
