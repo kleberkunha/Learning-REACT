@@ -27,6 +27,8 @@ function SearchBox(props){
     placeholder={props.frasePadrao ?? "Digite alguma coisa"}/>
     //aqui estou dando a referencia do props para buscar frasePadrao que esta no App.js
     // e estou dizendo com (??) que se frasePadrao conter algo ele usa, se nao, ele coloca a frase que esta a frente;
+
+    
   );
 }
 
