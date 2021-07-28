@@ -1,31 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
 import styled from 'styled-components';
-
+import SearchBox from './components/SearchBox';
 
 function App (){
+  //Nesse Exo estou aprendendo a separa componentes;
+  //criei uma pasta chamada components, e dentro dela criei um arquivo JS
+  //dentro desse arquivo JS estou criando uma nova funçao
+  //essa funçao criada esta gerando um input que podera ser usado sem ter que repetir o codigo
 
-  const [contagem, setContagem]= useState(0);
 
-
-  useEffect(() => {
-    document.title = "Contagem: "+contagem;
-  }, [contagem]);
-  //a funçao useEffect recebe sempre 2 parametros;
-  // () => {} é a funçao que vai executar quando alguma coisa acontecer;
-  // [] é o observador, vai observar as variaveis, e quando uma dessas variaveis mudar
-  //ele executa a funçao () => {};
-
-  function aumentarAction() {
-    setContagem(contagem + 1);
-  }
 
   return (
+
+    //frasePadrao é um props entao no arquivo SearchBox vou faze a referencia dele --->>
     <>
-    <h1>Contagem: {contagem}</h1>
-    <button onClick={aumentarAction}>Aumentar Numero</button>
+    <h1>Lista de tarefas</h1>
 
-
+    <SearchBox frasePadrao= "Faça a sua busca..."/>
+    <SearchBox frasePadrao= "Digite seu nome"/>
+    <SearchBox/>
     </>
   );
 }
