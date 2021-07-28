@@ -1,34 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import styled from 'styled-components';
 
 
 function App (){
 
-  const [total, setTotal] = useState('');
-  const handleTotal = (e) => {
-    setTotal (e.target.value);
+  const [contagem, setContagem]= useState(0);
+
+
+  useEffect(() => {
+    document.title = "Contagem: "+contagem;
+  }, [contagem]);
+  //a funçao useEffect recebe sempre 2 parametros;
+  // () => {} é a funçao que vai executar quando alguma coisa acontecer;
+  // [] é o observador, vai observar as variaveis, e quando uma dessas variaveis mudar
+  //ele executa a funçao () => {};
+
+  function aumentarAction() {
+    setContagem(contagem + 1);
   }
 
-  const [gorjeta, setGorjeta] = useState('');
-
-  const handleGorjeta = (e) => {
-    setGorjeta(e.target.value)
-  }
-  let totalGorjeta = (total * gorjeta / 100);
-  let Total = parseInt(total);
-  let fullTotal = totalGorjeta + Total;
   return (
     <>
-    <h1>Calculadora de Gorjeta</h1>
-    <p>Quanto deu a conta?</p>
-    <input type="number" value={total} onChange={handleTotal}></input>
-    <p>Qual a porcentagem da gorjeta ?</p>  
-    <input type="number" value={gorjeta} onChange={handleGorjeta}></input> 
-    <hr></hr>
-    <p>Subtotal: R$ {total}</p>
-    <p>Gorjeta({gorjeta}%): R$ {totalGorjeta}</p>
-    <h2>Total: R$ {fullTotal}</h2>
+    <h1>Contagem: {contagem}</h1>
+    <button onClick={aumentarAction}>Aumentar Numero</button>
+
+
     </>
   );
 }
