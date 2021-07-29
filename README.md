@@ -1,6 +1,5 @@
-# In this content you will learn how to create diferent pages using ROUTER, the comments are in Portuguese if you want to translate it;
-## Main is APP.js, the other files used are inside of the folder PAGES;
-
+# Files used are Apps.js && categoria.js;
+## Using query to change the url;
 
 
 
