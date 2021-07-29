@@ -1,4 +1,4 @@
-# The presentation of ROUTER: REDIRECT, using only the file App.js;
+# ROUTER: REDIRECT, using only the file App.js;
 ## The comments are in portuguese in case that you want to translate;
 
 
