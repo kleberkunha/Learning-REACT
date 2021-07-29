@@ -1,10 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import Home from './pages/home';
 import Sobre from './pages/sobre';
 import Categoria from './pages/categoria';
 
 function App (){
+
+
+  /*
+
+  Fazendo redirecionamento de rota;
+  Primeira coisa a fazer é importar REDIRECT;
+  (import { BrowserRouter, Switch, Route, Link, ----->>>>  Redirect  <<<<------ } from 'react-router-dom';)
+
+  depois crie o link  
+    <li>
+      <Link to="/quem-somos">Quem somos</Link>
+    </li>
+
+
+
+
+    depois crie a ROTA usando o Redirect que ira dizer para onde sera redirecionado usando o to="NOME da ROUTE para a qual sera redirecionado";
+      <Route path="/quem-somos">
+        <Redirect to="/sobre"/>
+      </Route>
+  
+  
+  
+  */
   return (
     <>
     <BrowserRouter>
@@ -17,6 +41,9 @@ function App (){
           </li>
           <li>
             <Link to="/sobre">Sobre</Link>
+          </li>
+          <li>
+            <Link to="/quem-somos">Quem somos</Link>
           </li>
           <li>
             <Link to="/categoria?tipo=esportes">Esportes</Link>
@@ -40,11 +67,17 @@ function App (){
 
         </Home>
       </Route>
+
       <Route path="/sobre">
         <Sobre>
 
         </Sobre>
       </Route>
+
+      <Route path="/quem-somos">
+        <Redirect to="/sobre"/>
+      </Route>
+
       <Route path="/categoria">
         <Categoria>
 
@@ -60,11 +93,7 @@ function App (){
     </footer>
     </BrowserRouter>
     </>
-    //Para a pagina nao encontrada preciso criar um novo ROUTE mas que o PATH sera "*", isso significa que acceita todas as urls,
-    //o programa vai ler todas as ROUTE de cima ate em baixo, caso a url que tenha sido digitada nao se encontra nos ROUTE especificados entao essa url sera jogada 
-    //para o ROUTE "*", que contem uma mensagem direta de "PAGINA NAO ENCONTRADA";
-    //Para realmente criar uma pagina que diz, pagina nao encontrada ou erro404, basta colocar dentro do <ROUTE><NotFoundPage>, criar um ROUTE como os outros mas que sera indicado para pagina de erro
-    //a mesma coisa como as outras paginas,/pages/notfoundpage.js;
+
   );
 }
 
