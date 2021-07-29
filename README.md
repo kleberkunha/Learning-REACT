@@ -1,7 +1,8 @@
-# Files used are Apps.js && categoria.js;
-## Using query to change the url;
+# The apresentation of this ROUTER: error 404, i'm using only the file App.js;
+## The comments are in portuguese in case that you want to translate;
 
 
+##########################################################################################"
 
 # Getting Started with Create React App
 

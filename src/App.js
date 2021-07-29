@@ -27,6 +27,9 @@ function App (){
           <li>
             <Link to="/categoria?tipo=viagem">viagem</Link>
           </li>
+          <li>
+            <Link to="/fdgdhjhfgr">url que nao existe</Link>
+          </li>
         </ul>
       </nav>
     </header>
@@ -47,6 +50,9 @@ function App (){
 
         </Categoria>
       </Route>
+      <Route path="*">
+        <h4>Pagina nao encontrada!</h4>
+      </Route>
     </Switch>
     <hr/>
     <footer>
@@ -54,7 +60,11 @@ function App (){
     </footer>
     </BrowserRouter>
     </>
-    
+    //Para a pagina nao encontrada preciso criar um novo ROUTE mas que o PATH sera "*", isso significa que acceita todas as urls,
+    //o programa vai ler todas as ROUTE de cima ate em baixo, caso a url que tenha sido digitada nao se encontra nos ROUTE especificados entao essa url sera jogada 
+    //para o ROUTE "*", que contem uma mensagem direta de "PAGINA NAO ENCONTRADA";
+    //Para realmente criar uma pagina que diz, pagina nao encontrada ou erro404, basta colocar dentro do <ROUTE><NotFoundPage>, criar um ROUTE como os outros mas que sera indicado para pagina de erro
+    //a mesma coisa como as outras paginas,/pages/notfoundpage.js;
   );
 }
 

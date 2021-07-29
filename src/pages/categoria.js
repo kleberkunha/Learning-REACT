@@ -9,6 +9,7 @@ function useQuery(){
 function Categoria(){
   let query = useQuery();
 
+  //TIPO esta sendo referenciado no <link> em APP.js;
   let cat = query.get('tipo');
 
 
