@@ -1,4 +1,4 @@
-# The apresentation of this ROUTER: error 404, i'm using only the file App.js;
+# The presentation of this ROUTER: error 404, i'm using only the file App.js;
 ## The comments are in portuguese in case that you want to translate;
 
 
