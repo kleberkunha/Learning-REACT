@@ -3,32 +3,43 @@ import { BrowserRouter, Switch, Route, Link, Redirect } from 'react-router-dom';
 import Home from './pages/home';
 import Sobre from './pages/sobre';
 import Categoria from './pages/categoria';
+import Login from './pages/login';
+
+const isLogged = false;
+
 
 function App (){
 
 
+  /*A pagina Home tera acesso livre, mas a sobre somente se estiver conectado */
+  /* Primeira coisa a fazer é criar uma constante fora da funçao, essa constante ira verificar se estou logado ou nao;   --->  const isLogged = false; <--- */
+  //Proximo passo é criar o ROUTE,
   /*
-
-  Fazendo redirecionamento de rota;
-  Primeira coisa a fazer é importar REDIRECT;
-  (import { BrowserRouter, Switch, Route, Link, ----->>>>  Redirect  <<<<------ } from 'react-router-dom';)
-
-  depois crie o link  
-    <li>
-      <Link to="/quem-somos">Quem somos</Link>
-    </li>
-
-
-
-
-    depois crie a ROTA usando o Redirect que ira dizer para onde sera redirecionado usando o to="NOME da ROUTE para a qual sera redirecionado";
-      <Route path="/quem-somos">
-        <Redirect to="/sobre"/>
+      <Route path="/sobre">
+        {isLogged ? <Sobre/> : <Redirect to="/login"/>}
+        se isLogged for true(?), ele acessa o conteudo <Sobre/>, caso contrario(:), ele é redirecionado para a pagina de login;
       </Route>
-  
-  
-  
   */
+
+
+      /*Segunda forma de fazer a ROTA PRIVADA */
+    /*
+    1- 
+      const PrivateRoute = ({children, ...rest }) =>{
+        return (
+          <Route {...rest}>
+
+          {isLogged ? children : <Redirect to="/login"/>}
+        );
+      };
+
+    2-no lugar de <Route></Route>
+      <PrivateRoute path="/sobre">
+        <Sobre/>
+      </PrivateRoute>
+    */
+
+
   return (
     <>
     <BrowserRouter>
@@ -42,21 +53,7 @@ function App (){
           <li>
             <Link to="/sobre">Sobre</Link>
           </li>
-          <li>
-            <Link to="/quem-somos">Quem somos</Link>
-          </li>
-          <li>
-            <Link to="/categoria?tipo=esportes">Esportes</Link>
-          </li>
-          <li>
-            <Link to="/categoria?tipo=noticias">Noticias</Link>
-          </li>
-          <li>
-            <Link to="/categoria?tipo=viagem">viagem</Link>
-          </li>
-          <li>
-            <Link to="/fdgdhjhfgr">url que nao existe</Link>
-          </li>
+
         </ul>
       </nav>
     </header>
@@ -67,22 +64,18 @@ function App (){
 
         </Home>
       </Route>
+      
+      <Route exact path="/login">
+        <Login>
+
+        </Login>
+      </Route>
+
 
       <Route path="/sobre">
-        <Sobre>
-
-        </Sobre>
+        {isLogged ? <Sobre/> : <Redirect to="/login"/>}
       </Route>
 
-      <Route path="/quem-somos">
-        <Redirect to="/sobre"/>
-      </Route>
-
-      <Route path="/categoria">
-        <Categoria>
-
-        </Categoria>
-      </Route>
       <Route path="*">
         <h4>Pagina nao encontrada!</h4>
       </Route>
