@@ -1,3 +1,9 @@
+# In this content you will learn how to create diferent pages using ROUTER, the comments are in Portuguese if you want to translate it;
+## Main is APP.js, the other files used are inside of the folder PAGES;
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
