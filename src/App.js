@@ -9,37 +9,7 @@ const isLogged = false;
 
 
 function App (){
-
-
-  /*A pagina Home tera acesso livre, mas a sobre somente se estiver conectado */
-  /* Primeira coisa a fazer é criar uma constante fora da funçao, essa constante ira verificar se estou logado ou nao;   --->  const isLogged = false; <--- */
-  //Proximo passo é criar o ROUTE,
-  /*
-      <Route path="/sobre">
-        {isLogged ? <Sobre/> : <Redirect to="/login"/>}
-        se isLogged for true(?), ele acessa o conteudo <Sobre/>, caso contrario(:), ele é redirecionado para a pagina de login;
-      </Route>
-  */
-
-
-      /*Segunda forma de fazer a ROTA PRIVADA */
-    /*
-    1- 
-      const PrivateRoute = ({children, ...rest }) =>{
-        return (
-          <Route {...rest}>
-
-          {isLogged ? children : <Redirect to="/login"/>}
-        );
-      };
-
-    2-no lugar de <Route></Route>
-      <PrivateRoute path="/sobre">
-        <Sobre/>
-      </PrivateRoute>
-    */
-
-
+  
   return (
     <>
     <BrowserRouter>
