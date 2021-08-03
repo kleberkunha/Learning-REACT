@@ -3,6 +3,7 @@ import {SearchArea,PageArea} from './styled';
 import useApi from '../../helpers/RpmApi';
 import {PageContainer} from '../../components/MainComponents'
 import { Link } from 'react-router-dom';
+import AdItem from '../../components/partials/AdItem'
 
 const Page = () =>{
 
@@ -10,6 +11,7 @@ const Page = () =>{
 
   const [stateList, setStateList] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [adList, setAdList] = useState([]);
 
   useEffect(()=> {
     const getState = async () => {
@@ -25,6 +27,17 @@ const Page = () =>{
       setCategories(cats);
     }
     getCategories();
+  }, []);
+
+  useEffect(()=> {
+    const getRecentAds = async () => {
+      const json = await api.getAds({
+        sort:'desc',
+        limit:8
+      });
+      setAdList(json.ads);
+    }
+    getRecentAds();
   }, []);
 
 
@@ -56,7 +69,15 @@ const Page = () =>{
       </SearchArea>
       <PageContainer>
         <PageArea>
-          ....
+          <h2>Recent posts</h2>
+          <div className="list">
+            {adList.map((i,k)=>
+              <AdItem key={k} data={i}/>
+            )}
+          </div>
+          <Link to="/ads" className="seeAllLink">See all</Link>
+          <hr/>
+          Lorem Ipsum blab bla bla bla bla
         </PageArea>
       </PageContainer>
     </>
