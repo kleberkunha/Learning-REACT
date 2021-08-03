@@ -1,15 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {SearchArea,PageArea} from './styled';
+import useApi from '../../helpers/RpmApi';
+import {PageContainer} from '../../components/MainComponents'
 
-const Page = () => {
+const Page = () =>{
+
+  const api = useApi();
+
+
   return(
-    <div>
-      <h1>Pagina inicial!</h1>
+    <>
+      <SearchArea>
+        <PageContainer>
+          <div className="searchBox">
+            <form method="GET" action="/ads">
+              <input type="text" name="q" placeholder="Search.."/>
+              <select name="state">
 
-      <Link to="/about">About</Link>
-    </div>
+              </select>
+              <button>Search</button>
+            </form>
+          </div>
+          <div className="categoryList">
+
+          </div>
+        </PageContainer>
+      </SearchArea>
+      <PageContainer>
+        <PageArea>
+          ....
+        </PageArea>
+      </PageContainer>
+    </>
+
   );
 }
-
 
 export default Page;
