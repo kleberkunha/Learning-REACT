@@ -9,7 +9,7 @@ export default (props) => {
   if(props.data.priceNegotiable){
     price = 'Price Negotiable!';
   }else{
-    price = `R$ ${props.data.price}`;
+    price = parseInt(props.data.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
   return (
