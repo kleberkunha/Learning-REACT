@@ -3,7 +3,8 @@ import { useParams } from 'react-router';
 import {PageArea, Fake} from './styled';
 import useApi from '../../helpers/RpmApi';
 
-import {PageContainer } from '../../components/MainComponents'
+import {PageContainer } from '../../components/MainComponents';
+
 
 const Page = () =>{
 
@@ -14,14 +15,13 @@ const Page = () =>{
   const[adInfo, setAdInfo] = useState({});
 
   useEffect(()=>{
-      const getAdInfo = async (id) =>{
-          const json = await api.getAd(id, true);
-          console.log(json);
-          setAdInfo(json);
-          setLoading(false);
-      }
-      getAdInfo(id);
-  }, []);
+    const getAdInfo = async (id) =>{
+        const json = await api.getAd(id, true);
+        setAdInfo(json);
+        setLoading(false);
+    }
+    getAdInfo(id);
+  },[]);
 
   return(
     <PageContainer>
@@ -35,8 +35,8 @@ const Page = () =>{
             <div className="aDinfo">
               <div className="adName">
                 {loading && <Fake height={20}/>}
-                {adInfo.title &&
-                  <h2>{adInfo.title}</h2>
+                {adInfo.id &&
+                  <h2>{adInfo.id}</h2>
                 }
                 {adInfo.dateCreated && 
                 <small>Criado em {adInfo.dateCreated}</small>}
